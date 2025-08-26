@@ -1,5 +1,6 @@
 import NavLinks from '@/app/ui/dashboard/header';
-import SMLinks from '@/app/ui/dashboard/footer'
+import SMLinks from '@/app/ui/dashboard/footer';
+import '@/app/ui/global.css';
 export default function RootLayout({
   children,
 }: {
