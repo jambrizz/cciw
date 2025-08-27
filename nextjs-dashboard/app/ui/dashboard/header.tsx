@@ -4,11 +4,11 @@
 import Link from 'next/link';
 
 const links = [
-    { name: 'Home', href: '/dashboard' },
+    { name: 'Home', href: '/' },
     { name: 'Providers', href: '/dashboard/providers' },
     { name: 'Events', href: '/dashboard/events' },
     { name: 'About Us', href: '/dashboard/about' },
-    { name: 'Login', href: '', icon: UserCircleIcon }
+    { name: 'Login', href: '/dashboard/login', icon: UserCircleIcon }
 ];
 
 export default function NavLinks() {
