@@ -90,7 +90,12 @@ export default function AddEventPage() {
                     </div>
                     <div>
                         <label htmlFor='event-description'>Event Description:</label>
-                        <textarea name='event-description' id='event-description' rows='5' cols='30'></textarea>
+                        <textarea
+                            name='event-description'
+                            id='event-description'
+                            rows={5}
+                            cols={30}
+                        ></textarea>
                     </div>
                     <br />
                     <input type='submit' value='Create Event' />
