@@ -1,4 +1,37 @@
 import postgres from 'postgres';
+
+const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+
+//This section is for Providers
+//////////////////////////////////////////////
+
+export async function fetchProviders() {
+    try {
+        const data = await sql<providers[]>`SELECT * FROM providers`;
+        return data;
+    } catch (error) {
+        console.error('Database Error:', error);
+        throw new Error('Failed to fetch Provider data.');
+    }
+}
+
+//////////////////////////////////////////////
+
+// This section is for Events
+export async function fetchEvents() {
+
+}
+
+///////////////////////////////////////////////
+
+//This section is for Users
+export async function fetchUser() {
+
+}
+
+///////////////////////////////////////////////
+/*
+import postgres from 'postgres';
 import {
   CustomerField,
   CustomersTableType,
@@ -216,3 +249,4 @@ export async function fetchFilteredCustomers(query: string) {
     throw new Error('Failed to fetch customer table.');
   }
 }
+*/
