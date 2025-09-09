@@ -7,9 +7,25 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 export async function fetchProviders() {
     try {
-        //Fix this section below
-        //const data = await sql<providers[]>`SELECT * FROM providers`;
-        //return data;
+        const data = await sql`
+            SELECT
+                id,
+                name,
+                type,
+                street_number,
+                street_name,
+                city,
+                county,
+                state,
+                zip,
+                phone,
+                email,
+                website,
+                created_at
+            FROM providers
+            ORDER BY name DESC
+        `;
+        return data
     } catch (error) {
         console.error('Database Error:', error);
         throw new Error('Failed to fetch Provider data.');
