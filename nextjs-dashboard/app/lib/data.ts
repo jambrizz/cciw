@@ -1,10 +1,21 @@
 import postgres from 'postgres';
+import { Provider } from './providerTypes';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 //This section is for Providers
 //////////////////////////////////////////////
 
+export async function fetchProviders(): Promise<Provider[]> {
+    try {
+        const data = await sql<Provider[]>`SELECT * FROM providers`;
+        return data;
+    } catch (error) {
+        console.error('Database Error:', error);
+        throw new Error('Failed to fetch Provider data.');
+    }
+}
+/*
 export async function fetchProviders() {
     try {
         const data = await sql`
@@ -31,7 +42,7 @@ export async function fetchProviders() {
         throw new Error('Failed to fetch Provider data.');
     }
 }
-
+*/
 //////////////////////////////////////////////
 
 // This section is for Events
