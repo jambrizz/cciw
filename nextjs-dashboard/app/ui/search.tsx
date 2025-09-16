@@ -15,8 +15,13 @@ export default function Search({ placeholder }: { placeholder: string }) {
         } else {
             params.delete('query');
         }
+
+        // Always reset page to 1 when performing a new search
+        params.set('page', '1');
+
         replace(`${pathname}?${params.toString()}`);
     }
+
 
     return (
     <div className="relative flex flex-1 flex-shrink-0">

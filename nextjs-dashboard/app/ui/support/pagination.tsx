@@ -5,16 +5,29 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { generatePagination } from '@/app/lib/utils';
 
+/*
 function createPageURL(pageNumber: number | string): string {
-    return `/providers?page=${pageNumber}`;
+    return `/dashboard/providers?page=${pageNumber}`;
+}
+*/
+
+function createPageURL(pageNumber: number | string, query: string = ''): string {
+    const params = new URLSearchParams();
+
+    params.set('page', pageNumber.toString());
+    if (query) params.set('query', query);
+
+    return `/dashboard/providers?${params.toString()}`;
 }
 
 export default function Pagination({
     totalPages,
     currentPage,
+    query,
 }: {
         totalPages: number;
         currentPage: number;
+        query: string;
     }) {
   
 
