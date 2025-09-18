@@ -39,7 +39,7 @@ export default function Pagination({
       { <div className="inline-flex">
         <PaginationArrow
           direction="left"
-          href={createPageURL(currentPage - 1)}
+          href={createPageURL(currentPage - 1, query)}
           isDisabled={currentPage <= 1}
         />
 
@@ -55,7 +55,7 @@ export default function Pagination({
             return (
               <PaginationNumber
                 key={`${page}-${index}`}
-                href={createPageURL(page)}
+                href={createPageURL(page, query)}
                 page={page}
                 position={position}
                 isActive={currentPage === page}
@@ -66,7 +66,7 @@ export default function Pagination({
 
         <PaginationArrow
           direction="right"
-          href={createPageURL(currentPage + 1)}
+          href={createPageURL(currentPage + 1, query)}
           isDisabled={currentPage >= totalPages}
         />
       </div> }
