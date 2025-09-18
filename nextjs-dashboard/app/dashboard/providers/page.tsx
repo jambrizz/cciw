@@ -7,7 +7,7 @@ import { Suspense } from 'react';
 export default async function ProvidersPage({
     searchParams,
 }: {
-    searchParams?: Record<string, string | string[] | undefined>;
+    searchParams?: Record<string, string | string[] >;
 }) {
     const currentPage = Number(searchParams?.page || '1');
     const query = typeof searchParams?.query === 'string' ? searchParams.query : '';
