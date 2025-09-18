@@ -7,6 +7,44 @@ import { Suspense } from 'react';
 import { headers } from 'next/headers';
 //import type { PageProps } from 'next';
 
+interface ProvidersPageProps {
+    searchParams?: {
+        page?: string;
+        query?: string;
+    };
+}
+
+export default async function ProvidersPage({ searchParams }: ProvidersPageProps) {
+    const currentPage = Number(searchParams?.page || '1');
+    const query = searchParams?.query || '';
+
+    //const currentPage = Number(searchParams.get('page') || '1');
+    //const query = searchParams.get('query') || '';
+
+    const providers = await fetchProviders(currentPage, query);
+    const totalPages = await fetchProvidersPages(query);
+
+    return (
+        <main className="p-6">
+            <div className="mb-6">
+                <h1 className="text-3xl font-bold text-gray-800">List of Providers</h1>
+            </div>
+
+            <div>
+                <Search placeholder="Search Provider" />
+            </div>
+
+            <Suspense key={query + currentPage}>
+                <ProviderList initialProviders={providers} />
+            </Suspense>
+
+            <Pagination totalPages={totalPages} currentPage={currentPage} query={query} />
+        </main>
+    );
+}
+
+
+/*
 export default async function ProvidersPage({
     searchParams,
 }: {
@@ -41,7 +79,7 @@ export default async function ProvidersPage({
     );
 }
 
-/*
+
 interface Props {
     searchParams?: {
         page?: string;
