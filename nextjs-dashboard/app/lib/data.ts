@@ -6,7 +6,7 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 //This section is for Providers
 //////////////////////////////////////////////
 
-const PROVIDERS_PER_PAGE = 1;
+const PROVIDERS_PER_PAGE = 10;
 
 export async function fetchProvidersPages(query: string = '') {
     try {

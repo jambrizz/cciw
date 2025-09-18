@@ -11,13 +11,13 @@ export default async function ProvidersPage({
 }) {
     // Await the searchParams Promise
     const params = await searchParams;
-
+    
     const currentPage = Number(params?.page || '1');
     const query = typeof params?.query === 'string' ? params.query : '';
-
+    
     const providers = await fetchProviders(currentPage, query);
     const totalPages = await fetchProvidersPages(query);
-
+    
     return (
         <main className="p-6">
             <div className="mb-6">
